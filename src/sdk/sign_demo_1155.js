@@ -1,5 +1,5 @@
-const SignUtil = require("../util/sign_util")
-const signUtil = new SignUtil();
+const SdkUtil = require("../util/sdk_util")
+const signUtil = new SdkUtil();
 
 var contractAddress = "0xdcdecd228f59a234287fece68ad8fb94f016b124";
 var owner = {
