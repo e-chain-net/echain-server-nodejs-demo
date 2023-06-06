@@ -2,7 +2,7 @@ const ApiUtil = require("./util/api_util")
 const apiUtil = new ApiUtil();
 const SdkUtil = require("./util/sdk_util")
 const sdkUtil = new SdkUtil();
-var env = require('../env')
+var env = require('./env')
 const axios = require('axios');
 
 //测试全流程-721
@@ -12,8 +12,8 @@ async function main(){
     //生成账户
     let owner = await sdkUtil.generateAccount();
     console.log("生成单个账户：")
-    console.log("address:",account.address);
-    console.log("privateKey:",account.privateKey);
+    console.log("address:",owner.address);
+    console.log("privateKey:",owner.privateKey);
     console.log("");
 
     //部署合约
@@ -46,12 +46,13 @@ async function main(){
         privateKey: owner.privateKey,
         blockNumber: blockNumber
       }
-      let signedTx = await signUtil.signMint721(param);
+      let signedTx = await sdkUtil.signMint721(param);
       console.log("Mint tx-hash:",signedTx.txHash);
       console.log("Mint signed:",signedTx.signedTx);
+      console.log("");
 
      //上链铸造交易，用户在实际使用时应填写回调地址
-    let response = await apiUtil.sendTx(signedTx.txHash,signedTx.signed,"");
+    let response = await apiUtil.sendTx(signedTx.txHash,signedTx.signedTx,"");
     if(response.code === "EC000001"){
         console.log("交易发送成功");
     }else{
