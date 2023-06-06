@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/e-chain-net/echain-server-nodejs-demo#readme",
   "dependencies": {
-    "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "web3": "^1.10.0"
   },
   "devDependencies": {
     "babel-cli": "^6.4.0",
